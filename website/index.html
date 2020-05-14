@@ -55,7 +55,6 @@
               <img src="./assets/img/logo.jpg" alt="logo" height="35px" width="35px"></a>
             <strong><a class="navbar-brand" href="index.html">Ideas that help</a></strong>
           </div>
-
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
           aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,26 +68,56 @@
       <div class="container">
         <div class="row" id="ideas">
         </div>
+        <div id="ideas_deails" class="card mb-3 box-shadow">
+          <div class="container">
+            <!-- Portfolio Item Heading -->
+            <h1 class="my-4">Tema
+
+            </h1>
+            <!-- Portfolio Item Row -->
+            <div class="card-body">
+              <div class="row">
+
+                <div class="col-md-8">
+                  <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+                </div>
+
+                <div class="col-md-4">
+                  <h3 class="my-3">Ideia</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
+                    pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus.
+                    Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+                  <a href="javascript:void(0);" onclick="show_ideas()">
+                    << Back</a>
+                </div>
+
+              </div>
+            </div>
+            <!-- /.row -->
+          </div>
+        </div>
       </div>
     </div>
-  </main>
+    </div>
 
+    <!-- Details Page -->
+
+    <!-- /.container -->
+
+  </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-right">
-        <a href="https://getbootstrap.com/docs/4.0/examples/album/#">Back to top</a>
+        <a href="#">Back to top</a>
       </p>
       <p>Album example is © Bootstrap, but please download and customize it for yourself!</p>
       <p>New to Bootstrap? <a href="https://getbootstrap.com/docs/4.0/">Visit the homepage</a> or read our <a
           href="https://getbootstrap.com/docs/4.0/getting-started/">getting started guide</a>.</p>
     </div>
   </footer>
-
   <!-- Bootstrap core JavaScript
     ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
-
-
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>
@@ -104,7 +133,7 @@
     local_url = '';
     server_url = 'http://api.ideiasqueajudam.com/ideias/';
     $(document).ready(
-      function () {
+      function load_ideas(e) {
         $.ajax({
           url: server_url,
           type: 'GET',
@@ -126,7 +155,9 @@
                   'data-holder-rendered="true">' +
                   '<div class="card-body">' +
                   '<h4 class="card-title">' +
-                  '<a href="http://api.ideiasqueajudam.com/ideias/' + idea.id + '">' + idea.titulo + '</a>' +
+                  '<a href="javascript:void(0);" onclick="show_idea_details(' + idea.id + ')">' + idea.titulo + '</a>' +
+                  //'<a href="#" onclick="show_details(' + idea.id + '); return false; ">' + idea.titulo + '</a>' +
+                  //'<a href="http://api.ideiasqueajudam.com/ideias/' + idea.id + '">' + idea.titulo + '</a>' +--
                   '</h4>' +
                   '<p class="card-text">' + idea.descricao + '</p>' +
                   '<div class="d-flex justify-content-between align-items-center">' +
@@ -136,13 +167,32 @@
                   '</div>');
               }
             );
-
+            document.getElementById('ideas_deails').style.display = "none";
           })
           .fail(function (jqXHR, textStatus, msg) {
             alert(textStatus, msg);
           })
-      }
+          e.preventDefault();
+
+        $('#ideas_deails').attr("style", "display:block");
+
+        $('#show_detail').click(function () {
+          //var id = $(this).attr('id');
+          console.log('passou');
+          alert('Sign new href executed.');
+        });
+      },
     );
+    function show_idea_details(id_idea) {
+      console.log('passou');
+      document.getElementById('ideas').style.display = "none";
+      document.getElementById('ideas_deails').style.display = "block";
+    }
+    function show_ideas() {
+      console.log('passou');
+      document.getElementById('ideas').style.display = "block";
+      document.getElementById('ideas_deails').style.display = "none";
+    }
   </script>
 
   <svg xmlns="http://www.w3.org/2000/svg" width="508" height="225" viewBox="0 0 508 225" preserveAspectRatio="none"
