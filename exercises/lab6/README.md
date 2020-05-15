@@ -6,14 +6,14 @@ This project is a **calculator** android App.
 
 Open your Android Studio
 Click on Start a New Android Studio Project.
-![Android Studio - Start a new project](/images/figure_001.jpg)
+![Android Studio - Start a new project](./images/figure_001.jpg)
 
 
 #### Step-2
 
 Select Empty Activity and click NEXT.
 
-![Android Studio - Select a project template](/images/figure_002.jpg)
+![Android Studio - Select a project template](../images/figure_002.jpg)
 
 #### Step-3
 
