@@ -46,7 +46,7 @@
     <!--  <link rel="stylesheet" type="text/css" href="css/index.css" />
 -->
 
-    <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
+    <link rel="icon" href="./res/icon.png">
 
     <title>IT 816 - Assignment 2</title>
 
@@ -255,14 +255,11 @@
                 .fail(function (jqXHR, textStatus, msg) {
                     alert(textStatus, msg);
                 })
-
-
-
         }
         function show_ideas() {
             console.log('passou');
             document.getElementById('ideas').style.display = "block";
-            document.getElementById('ideas_deails').style.display = "none";
+            document.getElementById('idea_details').style.display = "none";
         }
     </script>
     <script type="text/javascript" src="cordova.js"></script>

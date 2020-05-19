@@ -32,12 +32,16 @@
     <feature name="Vibration">
         <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
     </feature>
-    <name>ideasApp</name>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>ICT816 - Mobile Development</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Assignment 2 - Create an application for a mobile device that demonstrates both the device-based and web-based deployment. You can use any of the development platform that you are familiar with in the creation of the app. Seek first the approval of the tutor regarding the application you’re planning to create before starting its development.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="victor.cleber@outlook.com" href="http://phonegap.com">
+        Developer Team
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -47,6 +51,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <icon src="/res/icon.png" />
     <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
     <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
     <icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />

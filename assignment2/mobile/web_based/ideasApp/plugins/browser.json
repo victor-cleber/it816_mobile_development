@@ -30,6 +30,9 @@
     },
     "cordova-plugin-vibration": {
       "PACKAGE_NAME": "org.ideasApp.assignment2"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "org.ideasApp.assignment2"
     }
   },
   "dependent_plugins": {

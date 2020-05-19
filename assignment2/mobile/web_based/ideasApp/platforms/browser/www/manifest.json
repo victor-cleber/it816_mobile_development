@@ -1,11 +1,17 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "ideasApp",
-  "short_name": "ideasApp",
+  "name": "ICT816 - Mobile Development",
+  "short_name": "ICT816 - Mobile Development",
   "version": "org.ideasApp.assignment2",
-  "description": "Hello World sample application that responds to the deviceready event.",
-  "author": "PhoneGap Team",
-  "icons": [],
+  "description": "Assignment 2 - Create an application for a mobile device that demonstrates both the device-based and web-based deployment. You can use any of the development platform that you are familiar with in the creation of the app. Seek first the approval of the tutor regarding the application you’re planning to create before starting its development.",
+  "author": "Developer Team",
+  "icons": [
+    {
+      "src": "/res/icon.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    }
+  ],
   "start_url": "index.html"
 }

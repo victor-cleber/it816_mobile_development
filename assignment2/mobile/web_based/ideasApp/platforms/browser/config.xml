@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="org.ideasApp.assignment2" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>ideasApp</name>
+    <name>ICT816 - Mobile Development</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Assignment 2 - Create an application for a mobile device that demonstrates both the device-based and web-based deployment. You can use any of the development platform that you are familiar with in the creation of the app. Seek first the approval of the tutor regarding the application you’re planning to create before starting its development.
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="victor.cleber@outlook.com" href="http://phonegap.com">
+        Developer Team
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -15,6 +15,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <icon src="/res/icon.png" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="14" />
 </widget>
