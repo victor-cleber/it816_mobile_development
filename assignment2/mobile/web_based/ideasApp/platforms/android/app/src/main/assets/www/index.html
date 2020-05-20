@@ -46,7 +46,7 @@
     <!--  <link rel="stylesheet" type="text/css" href="css/index.css" />
 -->
 
-    <link rel="icon" href="./res/icon.png">
+    <link rel="icon" href="icon.png">
 
     <title>IT 816 - Assignment 2</title>
 
@@ -117,6 +117,21 @@
     </header>
     <div class="app">
         <main role="main">
+            <div class="row">
+                <div class="col"><img src="img/education.jpg" onclick="list_by_theme(1)" alt="education" class="rounded"
+                        style="margin:15px;" height="40px" width="40px">
+                </div>
+                <div class="col"><img src="img/social.jpg" onclick="list_by_theme(2)" alt="social" class="rounded"
+                        style="margin:15px;" height="40px" width="40px">
+                </div>
+                <div class="col"><img src="img/health.jpg" onclick="list_by_theme(3)" alt="health" class="rounded"
+                        style="margin:15px;" height="40px" width="40px">
+                </div>
+                <div class="col"><img src="img/money.jpg" onclick="list_by_theme(4)" alt="economy" class="rounded"
+                        style="margin:15px;" height="40px" width="40px">
+                </div>
+
+            </div>
             <div class="album py-5 bg-light">
                 <div class="container">
                     <div class="row" id="ideas">
@@ -261,8 +276,65 @@
             document.getElementById('ideas').style.display = "block";
             document.getElementById('idea_details').style.display = "none";
         }
+
+
+        function list_by_theme(id_theme) {
+            console.log('theme' + id_theme);
+            server_url = 'http://api.ideiasqueajudam.com/ideias/' + id_theme;
+
+            function load_ideas(e) {
+                $.ajax({
+                    url: server_url,
+                    type: 'GET',
+                    success: '',
+                    dataType: 'json',
+                })
+                    .done(function (ideas) { // on success - 200
+                        console.log(ideas); // on failure - 404
+                        $("#ideaarows").html('');
+                        $.each(ideas,
+                            function (idx, idea) {
+                                $("#ideas").append(' ' +
+                                    '<div class="col-md-3">' +
+                                    '<div class="card mb-3 box-shadow">' +
+                                    '<img class="card-img-top"' +
+                                    'data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"' +
+                                    'alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"' +
+                                    'src="' + idea.caminho_imagem + ' "' +
+                                    'data-holder-rendered="true">' +
+                                    '<div class="card-body">' +
+                                    '<h4 class="card-title">' +
+                                    '<a href="javascript:void(0);" onclick="show_details(' + idea.id + ')">' + idea.titulo + '</a>' +
+                                    //'<a href="#" onclick="show_details(' + idea.id + '); return false; ">' + idea.titulo + '</a>' +
+                                    //'<a href="http://api.ideiasqueajudam.com/ideias/' + idea.id + '">' + idea.titulo + '</a>' +--
+                                    '</h4>' +
+                                    '<p class="card-text">' + idea.descricao + '</p>' +
+                                    '<div class="d-flex justify-content-between align-items-center">' +
+                                    '<small class="text-muted">' + new Date(idea.criado_em).toDateString() + '</small>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>');
+                            }
+                        );
+                        document.getElementById('idea_details').style.display = "none";
+                    })
+                    .fail(function (jqXHR, textStatus, msg) {
+                        alert(textStatus, msg);
+                    })
+
+                $('#idea_details').attr("style", "display:block");
+
+                //$('#show_detail').click(function (evento) {
+                //var id = $(this).attr('id');
+                //  console.log(evento.data);
+                //     //alert('Sign new href executed.');
+                //  });
+            };
+
+
+        }
     </script>
-    <script type="text/javascript" src="cordova.js"></script>
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();

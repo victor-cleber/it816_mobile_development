@@ -8,7 +8,7 @@
   "author": "Developer Team",
   "icons": [
     {
-      "src": "/res/icon.png",
+      "src": "icon.png",
       "type": "image/png",
       "sizes": "undefinedxundefined"
     }

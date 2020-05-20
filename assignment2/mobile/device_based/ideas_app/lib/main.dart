@@ -1,4 +1,10 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
+import 'idea.dart';
 
 void main() => runApp(
       MyApp(),
@@ -13,8 +19,38 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.white,
       ),
-      home: Scaffold(
-        backgroundColor: Colors.tealAccent,
+      home: MyListScreen(),
+    );
+  }
+}
+
+class MyListScreen extends StatefulWidget {
+  @override
+  createState() => _MyListScreenState();
+}
+
+class _MyListScreenState extends State {
+  final String uri = 'http://api.ideiasqueajudam.com/ideias/?format=json';
+
+  Future<List<Idea>> _fetchIdeas() async {
+    var response = await http.get(uri);
+
+    if (response.statusCode == 200) {
+      final items = json.decode(response.body).cast<Map<String, dynamic>>();
+      List<Idea> listOfIdeass = items.map<Idea>((json) {
+        return Idea.fromJson(json);
+      }).toList();
+
+      return listOfIdeass;
+    } else {
+      throw Exception('Failed to load internet');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.white54,
         appBar: AppBar(
           title: Row(children: [
             Expanded(
@@ -76,9 +112,69 @@ class MyApp extends StatelessWidget {
                     ))),
           ]),
         ),
-        body: IdeasPage(),
-      ),
-    );
+        body: FutureBuilder<List<Idea>>(
+            future: _fetchIdeas(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData)
+                return Center(child: CircularProgressIndicator());
+
+              return ListView(
+                children: snapshot.data
+                    .map(
+                      (idea) =>
+                          /*ListTile(
+                          title: Text(idea.descricao),
+                          subtitle: ListTile(
+                              title: Text(idea.descricao),
+                              subtitle: Text('subtitle'),
+                              leading: CircleAvatar(
+                                backgroundColor: Colors.red,
+                                child: Text(idea.descricao,
+                                    style: TextStyle(
+                                      fontSize: 18.0,
+                                      color: Colors.white,
+                                    )),
+                              )),
+                        )
+                        */
+                          Card(
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              height: 100,
+                              width: 300,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: NetworkImage(idea.caminhoImagem),
+                                  fit: BoxFit.contain,
+                                  alignment: Alignment.topCenter,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: new EdgeInsets.all(2.0),
+                              child: Text(
+                                idea.titulo,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.fromLTRB(5, 0, 0, 1),
+                              child: Text(
+                                idea.descricao,
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                    .toList(),
+              );
+            }));
   }
 }
 

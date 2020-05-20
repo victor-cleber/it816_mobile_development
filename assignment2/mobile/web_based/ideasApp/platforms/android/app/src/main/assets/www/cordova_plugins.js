@@ -17,15 +17,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-inappbrowser.inappbrowser",
-      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
-      "pluginId": "cordova-plugin-inappbrowser",
-      "clobbers": [
-        "cordova.InAppBrowser.open",
-        "window.open"
-      ]
-    },
-    {
       "id": "cordova-plugin-dialogs.notification",
       "file": "plugins/cordova-plugin-dialogs/www/notification.js",
       "pluginId": "cordova-plugin-dialogs",
@@ -345,12 +336,20 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "navigator.splashscreen"
       ]
+    },
+    {
+      "id": "cordova-plugin-inappbrowser.inappbrowser",
+      "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+      "pluginId": "cordova-plugin-inappbrowser",
+      "clobbers": [
+        "cordova.InAppBrowser.open",
+        "window.open"
+      ]
     }
   ];
   module.exports.metadata = {
     "cordova-plugin-battery-status": "1.2.5",
     "cordova-plugin-device": "1.1.7",
-    "cordova-plugin-inappbrowser": "1.7.2",
     "cordova-plugin-dialogs": "1.3.4",
     "cordova-plugin-file": "4.3.3",
     "cordova-plugin-media-capture": "1.4.3",
@@ -358,6 +357,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-globalization": "1.0.9",
     "cordova-plugin-network-information": "1.3.4",
     "cordova-plugin-vibration": "2.1.6",
-    "cordova-plugin-splashscreen": "5.0.3"
+    "cordova-plugin-splashscreen": "5.0.3",
+    "cordova-plugin-inappbrowser": "3.2.0"
   };
 });

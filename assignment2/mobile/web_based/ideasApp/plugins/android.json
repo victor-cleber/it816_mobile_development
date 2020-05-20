@@ -13,9 +13,6 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "org.ideasApp.assignment2"
     },
-    "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "org.ideasApp.assignment2"
-    },
     "cordova-plugin-dialogs": {
       "PACKAGE_NAME": "org.ideasApp.assignment2"
     },
@@ -35,6 +32,9 @@
       "PACKAGE_NAME": "org.ideasApp.assignment2"
     },
     "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "org.ideasApp.assignment2"
+    },
+    "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "org.ideasApp.assignment2"
     }
   },
