@@ -117,19 +117,20 @@
     </header>
     <div class="app">
         <main role="main">
-            <div class="row">
+            <div class="row" style="background-color: whitesmoke;">
                 <div class="col-2"></div>
-                <div class="col-2"><img src="img/education.jpg" onclick="list_by_theme(1)" alt="education"
-                        class="rounded" style="margin:15px;" height="40px" width="40px">
+                <div class="col-2"><img src="img/education.jpg" onclick="list_by_theme(1); return false;"
+                        alt="education" class="botao3d" style="margin:15px 0px 15px 0px; border-radius:20px;"
+                        height="40px" width="40px">
                 </div>
-                <div class="col-2"><img src="img/social.jpg" onclick="list_by_theme(2)" alt="social" class="rounded"
-                        style="margin:15px;" height="40px" width="40px">
+                <div class="col-2"><img src="img/social.jpg" onclick="list_by_theme(2); return false;" alt="social"
+                        style="margin:15px 0px 15px 0px; border-radius:20px;" height="40px" width="40px">
                 </div>
-                <div class="col-2"><img src="img/health.jpg" onclick="list_by_theme(3)" alt="health" class="rounded"
-                        style="margin:15px;" height="40px" width="40px">
+                <div class="col-2"><img src="img/health.jpg" onclick="list_by_theme(3); return false;" alt="health"
+                        style="margin:15px 0px 15px 0px; border-radius:20px;" height="40px" width="40px">
                 </div>
-                <div class="col-2"><img src="img/money.jpg" onclick="list_by_theme(4)" alt="economy" class="rounded"
-                        style="margin:15px;" height="40px" width="40px">
+                <div class="col-2"><img src="img/money.jpg" onclick="list_by_theme(4); return false;" alt="economy"
+                        style="margin:15px 0px 15px 0px; border-radius:20px;" height="40px" width="40px">
                 </div>
                 <div class="col-2"></div>
             </div>
@@ -332,8 +333,11 @@
                 //  });
             };
 
+            //adicionar ao links na barra de busca
+            $('#myLink').click(function () { MyFunction(); return false; });
 
         }
+
     </script>
     <!--<script type="text/javascript" src="cordova.js"></script>-->
     <script type="text/javascript" src="js/index.js"></script>
