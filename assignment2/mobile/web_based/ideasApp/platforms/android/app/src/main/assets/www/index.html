@@ -116,35 +116,32 @@
             </div>
         </div>
     </header>
-    <div class="app">
+    <div class="app container">
         <main role="main">
             <div class="row" style="background-color: whitesmoke;">
                 <div class="col-2"></div>
                 <div class="col-2"><img src="img/education.jpg" onclick="list_by_theme(1); return false;"
-                        alt="education" style="margin:15px 0px 15px 0px; border-radius:50%; border:1px solid yellow"
+                        alt="education" style="margin:15px 0px 15px 0px; border-radius:50%; border:2px solid yellow"
                         height="40px" width="40px">
                 </div>
                 <div class="col-2"><img src="img/social.jpg" onclick="list_by_theme(2); return false;" alt="social"
-                        style="margin:15px 0px 15px 0px; border-radius:50%; border:1px solid yellow" height="40px"
+                        style="margin:15px 0px 15px 0px; border-radius:50%; border:2px solid yellow" height="40px"
                         width="40px">
                 </div>
                 <div class="col-2"><img src="img/health.jpg" onclick="list_by_theme(3); return false;" alt="health"
-                        style="margin:15px 0px 15px 0px; border-radius:50%; border:1px solid yellow" height="40px"
+                        style="margin:15px 0px 15px 0px; border-radius:50%; border:2px solid yellow" height="40px"
                         width="40px">
                 </div>
                 <div class="col-2"><img src="img/money.jpg" onclick="list_by_theme(4); return false;" alt="economy"
-                        style="margin:15px 0px 15px 0px; border-radius:50%; border:1px solid yellow" height="40px"
+                        style="margin:15px 0px 15px 0px; border-radius:50%; border:2px solid yellow" height="40px"
                         width="40px">
                 </div>
                 <div class="col-2"></div>
             </div>
             <div class="album bg-light">
                 <div class="container">
-                    <div class="row" id="ideas">
-                    </div>
-                    <div id="idea_details" class="card mb-3 box-shadow">
-
-                    </div>
+                    <div class="row" id="ideas"></div>
+                    <div id="idea_details" class="card mb-3 box-shadow"></div>
                 </div>
             </div>
 
@@ -282,24 +279,30 @@
             document.getElementById('ideas').style.display = "block";
             document.getElementById('idea_details').style.display = "none";
         }
-
-
         function list_by_theme(id_theme) {
-            console.log('theme' + id_theme);
-            server_url = 'http://api.ideiasqueajudam.com/ideias/' + id_theme;
+            //console.log('theme' + id_theme);
+            server_url = 'http://api.ideiasqueajudam.com/ideias/?format=json';
 
-            function load_ideas(e) {
-                $.ajax({
-                    url: server_url,
-                    type: 'GET',
-                    success: '',
-                    dataType: 'json',
-                })
-                    .done(function (ideas) { // on success - 200
-                        console.log(ideas); // on failure - 404
-                        $("#ideaarows").html('');
-                        $.each(ideas,
-                            function (idx, idea) {
+
+            $.ajax({
+                url: server_url,
+                type: 'GET',
+                success: '',
+                dataType: 'json',
+            })
+                .done(function (ideas) { // on success - 200
+                    console.log(ideas); // on failure - 404
+                    $("#ideas").html('');
+
+
+
+                    $.each(ideas,
+                        function (idx, idea) {
+                            //console.log(idea.id);
+                            if (idea.id == id_theme) {
+                                //print('ideas.id= ' + idea.id);
+                                console.log('ideas.id= ' + idea.id);
+                                console.log(idea.tema.split("/"));
                                 $("#ideas").append(' ' +
                                     '<div class="col-md-3">' +
                                     '<div class="card mb-3 box-shadow">' +
@@ -320,22 +323,25 @@
                                     '</div>' +
                                     '</div>' +
                                     '</div>');
+                            } else {
+                                console.log("there is nothing here");
                             }
-                        );
-                        document.getElementById('idea_details').style.display = "none";
-                    })
-                    .fail(function (jqXHR, textStatus, msg) {
-                        alert(textStatus, msg);
-                    })
+                        }
+                    );
+                    document.getElementById('idea_details').style.display = "none";
+                })
+                .fail(function (jqXHR, textStatus, msg) {
+                    alert(textStatus, msg);
+                })
 
-                $('#idea_details').attr("style", "display:block");
+            $('#idea_details').attr("style", "display:block");
 
-                //$('#show_detail').click(function (evento) {
-                //var id = $(this).attr('id');
-                //  console.log(evento.data);
-                //     //alert('Sign new href executed.');
-                //  });
-            };
+            //$('#show_detail').click(function (evento) {
+            //var id = $(this).attr('id');
+            //  console.log(evento.data);
+            //     //alert('Sign new href executed.');
+            //  });
+
 
             //adicionar ao links na barra de busca
             $('#myLink').click(function () { MyFunction(); return false; });
