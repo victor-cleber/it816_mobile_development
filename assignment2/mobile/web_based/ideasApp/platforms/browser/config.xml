@@ -7,16 +7,19 @@
     <author email="victor.cleber@outlook.com" href="http://phonegap.com">
         Developer Team
     </author>
-    <icon src="icon.png" />
-    <splash src="splash.png" />
     <content src="index.html" />
+    <gap:plugin name="cordova-plugin-whitelist" source="npm" />
+    <icon src="icon.png" target="icon.png" />
+    <splash src="www/splash.png" target="/splash.png" />
     <access origin="*" />
-    <allow-intent href="http://*/*" />
+    <allow-navigation href="*" />
+    <allow-intent href="" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="DisallowOverscroll" value="true" />
-    <preference name="android-minSdkVersion" value="14" />
+    <preference name="android-minSdkVersion" value="19" />
+    <preference name="SplashScreenDelay" value="5000" />
 </widget>
