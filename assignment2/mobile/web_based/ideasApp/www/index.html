@@ -97,7 +97,7 @@
                                     Linkedin</a></li>
                             <li><a href="https://github.com/victor-cleber" target="_blank" class="text-white">My Git
                                     Hub</a></li>
-                            <li><a href="javascript:void(0);" onclick="new_idea()">New Idea</a></li>
+                            <li><a href="javascript:void(0);" onclick="create_new_idea()">New Idea</a></li>
                         </ul>
                     </div>
                 </div>
@@ -123,7 +123,7 @@
     </header>
     <div class="app container">
         <main role="main">
-            <div class="row" style="background-color: whitesmoke;">
+            <div class="row" id="filter_theme" style="background-color: whitesmoke;">
                 <div class="col-3" style="text-align:center">
                     <p>Education</p><img src="img/education.jpg" onclick="list_by_theme(2); return false;"
                         alt="education" style="margin:0px 0px 15px 0px; border-radius:50%; border:2px solid yellow"
@@ -149,7 +149,7 @@
                 <div class="container">
                     <div id="ideas" class="row"></div>
                     <div id="idea_details" class="card mb-3 box-shadow"></div>
-                    <div id="create_idea" class=""></div>
+                    <div id="new_idea" class=""></div>
                 </div>
             </div>
 
@@ -383,22 +383,111 @@
             $('#myLink').click(function () { MyFunction(); return false; });
 
         }
-        function new_idea() {
-
-            document.getElementById('new').style.display = "none";
+        function create_new_idea() {
+            document.getElementById('filter_theme').style.display = "none";
+            document.getElementById('ideas').style.display = "none";
+            document.getElementById('idea_details').style.display = "none";
             document.getElementById('new_idea').style.display = "block";
 
-            "titulo": "Home Office",
-                "descricao": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores",
-                    "criado_em": "2020-04-14T13:25:51Z",
-                        "status": "AN",
-                            "link_youtube": "https://www.youtube.com/channel/UC3LsJbzvuTxyX8eC6ApIscg",
-                                "material_complementar": "https://www.youtube.com/channel/UC3LsJbzvuTxyX8eC6ApIscg",
-                                    "caminho_imagem": "https://futurefive.co.nz/uploads/story/2020/03/31/home_office.jpg",
-                                        "impacto": 2,
-                                            "realizador": "http://127.0.0.1:8000/realizadores/1/",
-                                                "tema": "http://127.0.0.1:8000/temas/4/",
-                                                    "aceita_termo_uso": 1
+            /* "titulo": "Home Office",
+                 "descricao": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores",
+                     "criado_em": "2020-04-14T13:25:51Z",
+                         "status": "AN",
+                             "link_youtube": "https://www.youtube.com/channel/UC3LsJbzvuTxyX8eC6ApIscg",
+                                 "material_complementar": "https://www.youtube.com/channel/UC3LsJbzvuTxyX8eC6ApIscg",
+                                     "caminho_imagem": "https://futurefive.co.nz/uploads/story/2020/03/31/home_office.jpg",
+                                         "impacto": 2,
+                                             "realizador": "http://127.0.0.1:8000/realizadores/1/",
+                                                 "tema": "http://127.0.0.1:8000/temas/4/",
+                                                     "aceita_termo_uso": 1
+                                                     */
+            $("#new_idea").append(
+                '<form class="needs-validation" > ' + //needs-validation was-validated
+                '<fieldset>' +
+                '<legend> Submit your idea</legend>' +
+                '<div class="form-group-row">' +
+                '<div class="col-md-8 mb-3">' +
+                '<label for="validationCustom01">Title</label>' +
+                '<input type="text" class="form-control" id="validationCustom01" placeholder="Title" required>' +
+                '<div class="invalid-feedback">' +
+                'Please provide a valid name about your idea.' +
+                '</div>' +
+                '</div>' +
+                '</div >' +
+                '<div class="form-group-row">' +
+                '<div class="col-md-8 mb-3">' +
+                '<label for="validationCustom02">Description</label>' +
+                '<input type="text" class="form-control" id="validationCustom02" placeholder="Description" required>' +
+                '<div class="invalid-feedback">' +
+                'Please provide a valid description about your idea.' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="form-group-row">' +
+                '<div class="col-md-8 mb-3">' +
+                '<label for="validationCustom02">Youtube link</label>' +
+                '<input type="text" class="form-control" id="validationCustom02" placeholder="Youtube link" required>' +
+                '<div class="invalid-feedback">' +
+                'Please provide a valid Youtube link about your idea.' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="form-group-row">' +
+                '<div class="col-md-8 mb-3">' +
+                '<label for="validationCustom03">Material link</label>' +
+                '<input type="text" class="form-control" id="validationCustom03" placeholder="Material link" required>' +
+                '<div class="invalid-feedback">' +
+                'Please provide a valid material link about your idea.' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="form-group-row">' +
+                '<div class="col-md-8 mb-3">' +
+                '<label for="validationCustom04">Imagem link</label>' +
+                '<input type="text" class="form-control" id="validationCustom04" placeholder="Image link" required>' +
+                '<div class="invalid-feedback">' +
+                'Please provide a valid image about your idea.' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="form-group-row">' +
+                '<div class="col-md-8 mb-3">' +
+                '<div class="form-check">' +
+                '<input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>' +
+                '<label class="form-check-label" for="invalidCheck">' +
+                'Agree to terms and conditions' +
+                '</label>' +
+                '<div class="invalid-feedback">' +
+                'You must agree before submitting.' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<button class="btn btn-primary" type="submit">Submit Idea</button>' +
+                '</fieldset>' +
+                '</form>' +
+                '<script>' +
+                '// Example starter JavaScript for disabling form submissions if there are invalid fields' +
+                '(function () {' +
+                'alert();' +
+                '"use strict";' +
+                'window.addEventListener("load", function () {' +
+                '// Fetch all the forms we want to apply custom Bootstrap validation styles to' +
+                'var forms = document.getElementsByClassName("needs - validation");' +
+                '// Loop over them and prevent submission' +
+                'var validation = Array.prototype.filter.call(forms, function (form) {' +
+                'form.addEventListener("submit", function (event) {' +
+                'if (form.checkValidity() === false) {' +
+                'event.preventDefault();' +
+                'event.stopPropagation();' +
+                '}' +
+                'form.classList.add("was - validated");' +
+                '}, false);' +
+                '});' +
+                '}, false);' +
+                '})();' +
+                ');');
         }
     </script>
     <script type="text/javascript" src="cordova.js"></script>
