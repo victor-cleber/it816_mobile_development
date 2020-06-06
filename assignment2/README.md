@@ -1,4 +1,4 @@
-![Ideas that help](/mobile/web_based/ideasApp/www/icon.png) 
+![Ideas that help](/assignment2/mobile/web_based/ideasApp/www/icon.png) 
 
 ### Ideas that help
 
