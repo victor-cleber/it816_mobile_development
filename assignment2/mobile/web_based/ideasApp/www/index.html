@@ -1,0 +1,508 @@
+﻿<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src	'self' 'unsafe-inline' *; img-src 'self' data: *">
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' data: http://* 'unsafe-inline'; script-src 'self' http://* 'unsafe-inline'
+    'unsafe-eval'; img-src 'self' data: *" />
+-->
+    <!--<meta http-equiv="Content-Security-Policy"
+        content="default-src gap://ready file://* *; style-src 'self' http://* https://* 'unsafe-inline'; script-src 'self' http://* https://* 'unsafe-inline' 'unsafe-eval'">
+   Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <!--  <link rel="stylesheet" type="text/css" href="css/index.css" />
+-->
+
+    <link rel="icon" href="icon.png">
+
+    <title>IT 816 - Assignment 2</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/album.css" rel="stylesheet">
+</head>
+
+<body>
+    <!--   <div class="app">
+        <h1>Hello World with PhoneGap</h1>
+        <div id="deviceready" class="blink">
+            <p class="event listening">Connecting to Device</p>
+            <p class="event received">Device is Ready</p>
+
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>-->
+    <header>
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">About</h4>
+                        <p class="text-muted">Victor Cleber is an international student at the master's
+                            degree in Information Technology at Southern Institute of Technology in
+                            New Zealand. He graduated in Analysis and Systems Development in 2011 and
+                            post-graduated Analysis and Systems Project in 2013 in Brazil.
+                            His areas of interest are software engineering, project management,
+                            quality and blockchain.</p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Contact</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="https://www.linkedin.com/in/victor-cleber/" target="_blank"
+                                    class="text-white">Follow on
+                                    Linkedin</a></li>
+                            <li><a href="https://github.com/victor-cleber" target="_blank" class="text-white">My Git
+                                    Hub</a></li>
+                            <li><a href="javascript:void(0);" onclick="create_new_idea()">New Idea</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <div class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd"></div>
+            <div class="container d-flex justify-content-between">
+                <a href="#" class="navbar-brand d-flex align-items-center">
+                    <div class="logo mr-auto">
+                        <a href="index.html">
+                            <img src="img/logo.png" style="margin-bottom:10px; border-radius: 50%" alt="logo"
+                                height="40px" width="40px"></a>
+                        <strong><a class="navbar-brand" href="index.html">Ideas that help</a></strong>
+                    </div>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <div class="app container">
+        <main role="main">
+            <div class="row" id="filter_theme" style="background-color: whitesmoke;">
+                <div class="col-3" style="text-align:center">
+                    <p>Education</p><img src="img/education.jpg" onclick="list_by_theme(2); return false;"
+                        alt="education" style="margin:0px 0px 15px 0px; border-radius:50%; border:2px solid yellow"
+                        height="50px" width="50px">
+                </div>
+                <div class="col-3" style="text-align:center">
+                    <p>Social</p><img src="img/social.jpg" onclick="list_by_theme(4); return false;" alt="social"
+                        style="margin:0px 0px 15px 0px; border-radius:50%; border:2px solid yellow" height="50px"
+                        width="50px">
+                </div>
+                <div class="col-3" style="text-align:center">
+                    <p>Health</p><img src="img/health.jpg" onclick="list_by_theme(1); return false;" alt="health"
+                        style="margin:0px 0px 15px 0px; border-radius:50%; border:2px solid yellow" height="50px"
+                        width="50px">
+                </div>
+                <div class="col-3" style="text-align:center">
+                    <p>Economy</p><img src="img/money.jpg" onclick="list_by_theme(3); return false;" alt="economy"
+                        style="margin:0px 0px 15px 0px; border-radius:50%; border:2px solid yellow" height="50px"
+                        width="50px">
+                </div>
+            </div>
+            <div class="album bg-light">
+                <div class="container">
+                    <div id="ideas" class="row"></div>
+                    <div id="idea_details" class="card mb-3 box-shadow"></div>
+                    <div id="new_idea" class=""></div>
+                </div>
+            </div>
+
+
+            <!-- Details Page -->
+
+            <!-- /.container -->
+
+        </main>
+    </div>
+    <footer class="text-muted" style="background-color: #e3f2fd;">
+        <div class="container">
+            <p class="float-right">
+                <a href="#">Back to top</a>
+            </p>
+            <p>Album example is © Bootstrap, but please download and customize it for yourself!</p>
+            <p>New to Bootstrap? <a href="https://getbootstrap.com/docs/4.0/">Visit the homepage</a> or read our <a
+                    href="https://getbootstrap.com/docs/4.0/getting-started/">getting started guide</a>.</p>
+        </div>
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="js/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="js/holder.min.js.download"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script>
+        document.addEventListener("deviceready", onDeviceReady, false);
+
+        function onDeviceReady() {
+            //your code here
+
+            local_url = '';
+            server_url = 'http://api.ideiasqueajudam.com/ideias/?format=json';
+            $(document).ready(
+                function load_ideas(e) {
+                    $.ajax({
+                        url: server_url,
+                        type: 'GET',
+                        success: function (ideas) { console.log(ideas) },
+                        dataType: 'json',
+                    })
+                        .done(function (ideas) { // on success - 200  data, textStatus, jqXHR
+                            console.log(ideas); // on failure - 404
+                            $("#ideaarows").html('');
+                            console.log('list all');
+                            $.each(ideas,
+                                function (idx, idea) {
+                                    $("#ideas").append(' ' +
+                                        '<div class="col-md-3">' +
+                                        '<div class="card mb-3 box-shadow">' +
+                                        '<img class="card-img-top"' +
+                                        'data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"' +
+                                        'alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"' +
+                                        'src="' + idea.caminho_imagem + ' "' +
+                                        'data-holder-rendered="true">' +
+                                        '<div class="card-body">' +
+                                        '<h4 class="card-title">' +
+                                        '<a href="javascript:void(0);" onclick="show_details(' + idea.id + ')">' + idea.titulo + '</a>' +
+                                        //'<a href="#" onclick="show_details(' + idea.id + '); return false; ">' + idea.titulo + '</a>' +
+                                        //'<a href="http://api.ideiasqueajudam.com/ideias/' + idea.id + '">' + idea.titulo + '</a>' +--
+                                        '</h4>' +
+                                        '<p class="card-text">' + idea.descricao + '</p>' +
+                                        '<div class="d-flex justify-content-between align-items-center">' +
+                                        '<small class="text-muted">' + new Date(idea.criado_em).toDateString() + '</small>' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>');
+                                }
+                            );
+                            document.getElementById('idea_details').style.display = "none";
+                        })
+                        .fail(function (jqXHR, textStatus, error) {
+                            alert("readyState: " + jqXHR.readyState);
+                            alert("responseText: " + jqXHR.responseText);
+                            alert("status: " + jqXHR.status);
+                            alert("text status: " + textStatus);
+                            alert("error: " + error);
+                        })
+
+                    $('#idea_details').attr("style", "display:block");
+
+                    //$('#show_detail').click(function (evento) {
+                    //var id = $(this).attr('id');
+                    //  console.log(evento.data);
+                    //     //alert('Sign new href executed.');
+                    //  });
+                },
+            );
+        }
+        function show_details(id_idea) {
+            console.log(id_idea);
+
+            //request no id da idea
+
+            document.getElementById('ideas').style.display = "none";
+            document.getElementById('idea_details').style.display = "block";
+
+            $.ajax({
+                url: 'http://api.ideiasqueajudam.com/ideias/' + id_idea,
+                type: 'GET',
+                success: '',
+                dataType: 'json',
+            })
+                .done(function (idea) { // on success - 200
+                    console.log('done');
+                    $("#idea_details").html('');
+
+                    $("#idea_details").append(
+                        '<div class="container">' +
+                        '<!-- Portfolio Item Heading -->' +
+                        '<h1 class="my-4">' + idea.titulo + '</h1> ' +
+                        '<!-- Portfolio Item Row -->' +
+                        '<div class="card-body">' +
+                        '<div class= "row"> ' +
+                        '<div class="col-md-8">' +
+                        '<img class="img-fluid" src="' + idea.caminho_imagem + '">' +
+                        '</div>' +
+                        '<div class= "col-md-4" > ' +
+                        '<h3 class= "my-3" ></h3>' +
+                        '<p>' + idea.descricao + '</p>' +
+                        '<a href="javascript:void(0);" onclick="show_ideas()">' +
+                        '<< Back</a>' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+
+                        '</div>');
+                    // $('#ideas_deails').attr("style", "display:block");
+                    // document.getElementById('ideas_deails').style.display = "block";
+                })
+                .fail(function (xhr, status, error) {
+                    var err = eval("(" + xhr.responseText + ")");
+                    alert(err)
+                })
+        }
+        function show_ideas() {
+            console.log('passou');
+            document.getElementById('ideas').style.display = "block";
+            document.getElementById('idea_details').style.display = "none";
+        }
+        function list_by_theme(id_theme) {
+            //console.log('theme' + id_theme);
+            server_url = 'http://api.ideiasqueajudam.com/ideias/?format=json';
+
+
+            $.ajax({
+                url: server_url,
+                type: 'GET',
+                success: '',
+                dataType: 'json',
+            })
+                .done(function (ideas) { // on success - 200
+                    console.log(ideas); // on failure - 404
+                    $("#ideas").html('');
+                    var qtd_ideas = 0;
+                    $.each(ideas,
+                        function (idx, idea) {
+                            //console.log(idea.id);
+                            if (idea.tema.id == id_theme) {
+
+                                //print('ideas.id= ' + idea.id);
+                                console.log('ideas.id= ' + idea.tema.id);
+                                console.log(idea.tema.id);
+                                // console.log(tema.split("/"));
+                                $("#ideas").append(' ' +
+                                    '<div class="col-md-3">' +
+                                    '<div class="card mb-3 box-shadow">' +
+                                    '<img class="card-img-top"' +
+                                    'data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"' +
+                                    'alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"' +
+                                    'src="' + idea.caminho_imagem + ' "' +
+                                    'data-holder-rendered="true">' +
+                                    '<div class="card-body">' +
+                                    '<h4 class="card-title">' +
+                                    '<a href="javascript:void(0);" onclick="show_details(' + idea.id + ')">' + idea.titulo + '</a>' +
+                                    //'<a href="#" onclick="show_details(' + idea.id + '); return false; ">' + idea.titulo + '</a>' +
+                                    //'<a href="http://api.ideiasqueajudam.com/ideias/' + idea.id + '">' + idea.titulo + '</a>' +--
+                                    '</h4>' +
+                                    '<p class="card-text">' + idea.descricao + '</p>' +
+                                    '<div class="d-flex justify-content-between align-items-center">' +
+                                    '<small class="text-muted">' + new Date(idea.criado_em).toDateString() + '</small>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>');
+                            } else {
+                                qtd_ideas = qtd_ideas + 1;
+                                console.log(qtd_ideas)
+
+                            }
+                        }
+                    );
+                    document.getElementById('idea_details').style.display = "none";
+                    /* if (qtd_ideas > 0) {
+                         console.log("there is nothing here");
+                         $("#ideas").append(' ' +
+                             '<div class="row">' +
+                             '<div class="col-12">' +
+                             '<img class="card-img-top"' +
+                             'data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"' +
+                             'alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"' +
+                             'src="img/no-idea.jpg"' +
+                             'data-holder-rendered="true">' +
+                             'Sorry, there is nothing here!!' +
+                             '</div>' +
+                             '</div>');
+                     }*/
+                })
+                .fail(function (xhr, status, error) {
+                    var err = eval("(" + xhr.responseText + ")");
+                    alert(err)
+                })
+
+            $('#idea_details').attr("style", "display:block");
+
+            //$('#show_detail').click(function (evento) {
+            //var id = $(this).attr('id');
+            //  console.log(evento.data);
+            //     //alert('Sign new href executed.');
+            //  });
+
+
+            //adicionar ao links na barra de busca
+            $('#myLink').click(function () { MyFunction(); return false; });
+
+        }
+        function create_new_idea() {
+            document.getElementById('filter_theme').style.display = "none";
+            document.getElementById('ideas').style.display = "none";
+            document.getElementById('idea_details').style.display = "none";
+            document.getElementById('new_idea').style.display = "block";
+
+            /* "titulo": "Home Office",
+                 "descricao": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores",
+                     "criado_em": "2020-04-14T13:25:51Z",
+                         "status": "AN",
+                             "link_youtube": "https://www.youtube.com/channel/UC3LsJbzvuTxyX8eC6ApIscg",
+                                 "material_complementar": "https://www.youtube.com/channel/UC3LsJbzvuTxyX8eC6ApIscg",
+                                     "caminho_imagem": "https://futurefive.co.nz/uploads/story/2020/03/31/home_office.jpg",
+                                         "impacto": 2,
+                                             "realizador": "http://127.0.0.1:8000/realizadores/1/",
+                                                 "tema": "http://127.0.0.1:8000/temas/4/",
+                                                     "aceita_termo_uso": 1
+                                                     */
+            $("#new_idea").append(
+                '<form class="needs-validation" > ' + //needs-validation was-validated
+                '<fieldset>' +
+                '<legend> Submit your idea</legend>' +
+                '<div class="form-group-row">' +
+                '<div class="col-md-8 mb-3">' +
+                '<label for="validationCustom01">Title</label>' +
+                '<input type="text" class="form-control" id="validationCustom01" placeholder="Title" required>' +
+                '<div class="invalid-feedback">' +
+                'Please provide a valid name about your idea.' +
+                '</div>' +
+                '</div>' +
+                '</div >' +
+                '<div class="form-group-row">' +
+                '<div class="col-md-8 mb-3">' +
+                '<label for="validationCustom02">Description</label>' +
+                '<input type="text" class="form-control" id="validationCustom02" placeholder="Description" required>' +
+                '<div class="invalid-feedback">' +
+                'Please provide a valid description about your idea.' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="form-group-row">' +
+                '<div class="col-md-8 mb-3">' +
+                '<label for="validationCustom02">Youtube link</label>' +
+                '<input type="text" class="form-control" id="validationCustom02" placeholder="Youtube link" required>' +
+                '<div class="invalid-feedback">' +
+                'Please provide a valid Youtube link about your idea.' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="form-group-row">' +
+                '<div class="col-md-8 mb-3">' +
+                '<label for="validationCustom03">Material link</label>' +
+                '<input type="text" class="form-control" id="validationCustom03" placeholder="Material link" required>' +
+                '<div class="invalid-feedback">' +
+                'Please provide a valid material link about your idea.' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="form-group-row">' +
+                '<div class="col-md-8 mb-3">' +
+                '<label for="validationCustom04">Imagem link</label>' +
+                '<input type="text" class="form-control" id="validationCustom04" placeholder="Image link" required>' +
+                '<div class="invalid-feedback">' +
+                'Please provide a valid image about your idea.' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="form-group-row">' +
+                '<div class="col-md-8 mb-3">' +
+                '<div class="form-check">' +
+                '<input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>' +
+                '<label class="form-check-label" for="invalidCheck">' +
+                'Agree to terms and conditions' +
+                '</label>' +
+                '<div class="invalid-feedback">' +
+                'You must agree before submitting.' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<button class="btn btn-primary" type="submit">Submit Idea</button>' +
+                '</fieldset>' +
+                '</form>' +
+                '<script>' +
+                '// Example starter JavaScript for disabling form submissions if there are invalid fields' +
+                '(function () {' +
+                'alert();' +
+                '"use strict";' +
+                'window.addEventListener("load", function () {' +
+                '// Fetch all the forms we want to apply custom Bootstrap validation styles to' +
+                'var forms = document.getElementsByClassName("needs - validation");' +
+                '// Loop over them and prevent submission' +
+                'var validation = Array.prototype.filter.call(forms, function (form) {' +
+                'form.addEventListener("submit", function (event) {' +
+                'if (form.checkValidity() === false) {' +
+                'event.preventDefault();' +
+                'event.stopPropagation();' +
+                '}' +
+                'form.classList.add("was - validated");' +
+                '}, false);' +
+                '});' +
+                '}, false);' +
+                '})();' +
+                ');');
+        }
+    </script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+
+    <svg xmlns="http://www.w3.org/2000/svg" width="508" height="225" viewBox="0 0 508 225" preserveAspectRatio="none"
+        style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;">
+        <defs>
+            <style type="text/css"></style>
+        </defs><text x="0" y="25"
+            style="font-weight:bold;font-size:25pt;font-family:Arial, Helvetica, Open Sans, sans-serif">Thumbnail</text>
+    </svg>
+</body>
+
+</html>

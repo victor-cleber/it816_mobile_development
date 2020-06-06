@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)https://getbootstrap.com/docs/4.0/examples/album/# -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
+
+  <title>IT 816 - Assignment 2</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
+
+  <!-- Bootstrap core CSS -->
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="./assets/css/album.css" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <div class="collapse bg-dark" id="navbarHeader">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8 col-md-7 py-4">
+            <h4 class="text-white">About</h4>
+            <p class="text-muted">Victor Cleber is an international student at the master's
+              degree in Information Technology at Southern Institute of Technology in
+              New Zealand. He graduated in Analysis and Systems Development in 2011 and
+              post-graduated Analysis and Systems Project in 2013 in Brazil.
+              His areas of interest are software engineering, project management,
+              quality and blockchain.</p>
+          </div>
+          <div class="col-sm-4 offset-md-1 py-4">
+            <h4 class="text-white">Contact</h4>
+            <ul class="list-unstyled">
+              <li><a href="https://www.linkedin.com/in/victor-cleber/" class="text-white">Follow on Linkedin</a></li>
+              <li><a href="https://github.com/victor-cleber" class="text-white">My Git Hub</a></li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar navbar-light" style="background-color: white;">
+      <div class="navbar navbar-expand-lg navbar-light" style="background-color: white"></div>
+      <div class="container d-flex justify-content-between">
+        <a href="#" class="navbar-brand d-flex align-items-center">
+          <div class="logo mr-auto">
+            <a href="index.html">
+              <img src="./assets/img/logo.jpg" alt="logo" height="35px" width="35px"></a>
+            <strong><a class="navbar-brand" href="index.html">Ideas that help</a></strong>
+          </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader"
+          aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+  <main role="main">
+    <div class="album py-5 bg-light">
+      <div class="container">
+        <div class="row" id="ideas">
+        </div>
+        <div id="ideas_deails" class="card mb-3 box-shadow">
+          <div class="container">
+            <!-- Portfolio Item Heading -->
+            <h1 class="my-4">Tema
+
+            </h1>
+            <!-- Portfolio Item Row -->
+            <div class="card-body">
+              <div class="row">
+
+                <div class="col-md-8">
+                  <img class="img-fluid" src="http://placehold.it/750x500" alt="">
+                </div>
+
+                <div class="col-md-4">
+                  <h3 class="my-3">Ideia</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida
+                    pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus.
+                    Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+                  <a href="javascript:void(0);" onclick="show_ideas()">
+                    << Back</a>
+                </div>
+
+              </div>
+            </div>
+            <!-- /.row -->
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Details Page -->
+
+    <!-- /.container -->
+
+  </main>
+  <footer class="text-muted">
+    <div class="container">
+      <p class="float-right">
+        <a href="#">Back to top</a>
+      </p>
+      <p>Album example is © Bootstrap, but please download and customize it for yourself!</p>
+      <p>New to Bootstrap? <a href="https://getbootstrap.com/docs/4.0/">Visit the homepage</a> or read our <a
+          href="https://getbootstrap.com/docs/4.0/getting-started/">getting started guide</a>.</p>
+    </div>
+  </footer>
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="./Album example for Bootstrap_files/holder.min.js.download"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+    local_url = '';
+    server_url = 'http://api.ideiasqueajudam.com/ideias/';
+    $(document).ready(
+      function load_ideas(e) {
+        $.ajax({
+          url: server_url,
+          type: 'GET',
+          success: '',
+          dataType: 'json',
+        })
+          .done(function (ideas) { // on success - 200
+            console.log(ideas); // on failure - 404
+            $("#ideaarows").html('');
+            $.each(ideas,
+              function (idx, idea) {
+                $("#ideas").append(' ' +
+                  '<div class="col-md-3">' +
+                  '<div class="card mb-3 box-shadow">' +
+                  '<img class="card-img-top"' +
+                  'data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"' +
+                  'alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;"' +
+                  'src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22508%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20508%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_171eed378c2%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A25pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_171eed378c2%22%3E%3Crect%20width%3D%22508%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22169.6640625%22%20y%3D%22124.303125%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"' +
+                  'data-holder-rendered="true">' +
+                  '<div class="card-body">' +
+                  '<h4 class="card-title">' +
+                  '<a href="javascript:void(0);" onclick="show_idea_details(' + idea.id + ')">' + idea.titulo + '</a>' +
+                  //'<a href="#" onclick="show_details(' + idea.id + '); return false; ">' + idea.titulo + '</a>' +
+                  //'<a href="http://api.ideiasqueajudam.com/ideias/' + idea.id + '">' + idea.titulo + '</a>' +--
+                  '</h4>' +
+                  '<p class="card-text">' + idea.descricao + '</p>' +
+                  '<div class="d-flex justify-content-between align-items-center">' +
+                  '<small class="text-muted">' + new Date(idea.criado_em).toDateString() + '</small>' +
+                  '</div>' +
+                  '</div>' +
+                  '</div>');
+              }
+            );
+            document.getElementById('ideas_deails').style.display = "none";
+          })
+          .fail(function (jqXHR, textStatus, msg) {
+            alert(textStatus, msg);
+          })
+          e.preventDefault();
+
+        $('#ideas_deails').attr("style", "display:block");
+
+        $('#show_detail').click(function () {
+          //var id = $(this).attr('id');
+          console.log('passou');
+          alert('Sign new href executed.');
+        });
+      },
+    );
+    function show_idea_details(id_idea) {
+      console.log('passou');
+      document.getElementById('ideas').style.display = "none";
+      document.getElementById('ideas_deails').style.display = "block";
+    }
+    function show_ideas() {
+      console.log('passou');
+      document.getElementById('ideas').style.display = "block";
+      document.getElementById('ideas_deails').style.display = "none";
+    }
+  </script>
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="508" height="225" viewBox="0 0 508 225" preserveAspectRatio="none"
+    style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;">
+    <defs>
+      <style type="text/css"></style>
+    </defs><text x="0" y="25"
+      style="font-weight:bold;font-size:25pt;font-family:Arial, Helvetica, Open Sans, sans-serif">Thumbnail</text>
+  </svg>
+</body>
+
+</html>
