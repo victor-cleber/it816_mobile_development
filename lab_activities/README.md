@@ -37,4 +37,4 @@ Retrieve from https://crunchify.com/how-to-create-simple-calculator-android-app-
 #### Lab Activity 7c - WebView
 Retrieved from https://developer.chrome.com/multidevice/webview/gettingstarted
 
-![7c - WebView](./images/figure_001.jpg)
+![7c - WebView](./images/lab7c_webview.png)
